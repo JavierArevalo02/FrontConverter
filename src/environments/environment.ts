@@ -8,5 +8,4 @@ export const environment = {
   converterServiceFixer:window["env"].converterFixer,
   converterServiceCurrency:window["env"].converterCurrency,
   converterServiceExchangerates:window["env"].converterExchangerates,
-  apikey:window["env"].apikey
 };

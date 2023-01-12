@@ -4,13 +4,13 @@ import { LoginComponent } from './login/login.component';
 import { ConverterComponent } from './converter/converter.component';
 
 const routes: Routes = [
-  {
+  /*{
     path: '',
     redirectTo: 'conversion',
     pathMatch: 'full',
-  },
+  },*/
   { path: 'login',  component: LoginComponent },
-  { path: 'conversion',  component: ConverterComponent },
+  { path: '',  component: ConverterComponent },
 ];
 
 @NgModule({
