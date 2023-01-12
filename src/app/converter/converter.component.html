@@ -1,0 +1,103 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-4">
+          <br>
+          <select class="custom-select" [(ngModel)]="selectedAPI">
+            <option *ngFor="let api of apis" [value]="api.value">{{api.name}}</option>
+          </select>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <br>
+          <a *ngIf="selectedAPI=='Fixer'" style="display: block; margin: 0 auto; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" class="btn btn-info" href="https://apilayer.com/marketplace/fixer-api?_gl=1*1uy14tv*_ga*MTEwMzc0NDAwMy4xNjczNDAyMzAw*_ga_HGV43FGGVM*MTY3MzQwMjI5OS4xLjAuMTY3MzQwMjI5OS42MC4wLjA.#pricing" target="_blank">Get api key</a>
+          <a *ngIf="selectedAPI=='Currency'" style="display: block; margin: 0 auto; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" class="btn btn-info" href="https://apilayer.com/marketplace/currency_data-api?_gl=1*1z0gway*_ga*MjA0NTYyODM4MC4xNjczNDAyMzUx*_ga_HGV43FGGVM*MTY3MzQwMjM1MC4xLjAuMTY3MzQwMjM1MC42MC4wLjA.#pricing" target="_blank">Get api key</a>
+          <a *ngIf="selectedAPI=='Exchange'" style="display: block; margin: 0 auto; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" class="btn btn-info" href="https://apilayer.com/marketplace/exchangerates_data-api?_gl=1*dyriz8*_ga*NjUwNjExOTM2LjE2NzM0MDM2MDQ.*_ga_HGV43FGGVM*MTY3MzQwMzYwNC4xLjAuMTY3MzQwMzYwNC42MC4wLjA.#pricing" target="_blank">Get api key</a>
+        </div>  
+        <div class="col-lg-6 col-md-6 col-sm-5">
+          <br>
+          <div class="input-group mb-3">
+            <input [(ngModel)]="apiKey" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="API key">
+          </div>
+        </div> 
+      </div>
+      <br>
+      <br>
+      <br>
+        <div class="row">
+            <div class="col-lg-5 col-md-4 col-sm-4">
+              <select class="custom-select" [(ngModel)]="selectedFrom">
+                <option *ngFor="let coin of coins" [value]="coin.symbol">{{coin.name}}</option>
+                <option selected>FROM</option>
+              </select>
+            </div>
+            <div class="col-lg-5 col-md-4 col-sm-4">
+              <select class="custom-select" [(ngModel)]="selectedTo">
+                <option *ngFor="let coin of coins" [value]="coin.symbol">{{coin.name}}</option>
+                <option selected>TO</option>
+              </select>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4">
+              <input [(ngModel)]="amount" type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Amount">
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row" style="text-align: center;">
+          <button type="button" class="btn btn-info" style="display: block; margin: 0 auto;" (click)="converter()">Converter</button>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="padding: 1em; border-width: 1px; border-style: solid; border-color: rgb(0 129 213 / 59%);" *ngIf="alert">
+          <div class="row" >
+              <h2 style="display: block; margin: 0 auto; color:  rgba(3, 121, 199, 0.925);">{{message}}</h2>
+          </div>
+          <br>
+          <div class="row" >
+              <button class="btn btn-info" style="display: block; margin: 0 auto;" (click)="closeAlert()">Close</button>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                              <h2 class="card-title">{{selectedFrom}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="profile">
+                              {{amount}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 ">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h2 class="card-title">{{selectedTo}}</h2>
+                    </div>
+                    <div class="card-body table-responsive">
+                        {{result}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row" style="text-align: center;">
+          <button type="button" class="btn btn-info" style="display: block; margin: 0 auto;" (click)="clean()">Clean</button>
+        </div>
+    </div>
+  </div>
+  

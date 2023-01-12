@@ -5,6 +5,7 @@ module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    files:[{ pattern: 'src/assets/env.js', watched: true, included: true, served: true }],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
@@ -31,6 +32,9 @@ module.exports = function (config) {
         { type: 'html' },
         { type: 'text-summary' }
       ]
+    },
+    browserConsoleLogOptions: {
+      level: 'log'
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
